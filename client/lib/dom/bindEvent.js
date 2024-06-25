@@ -1,9 +1,16 @@
-function bindEvent(node,type,handler){
+import { getNode } from "./getNode.js";
+import { isString } from "../utils/type.js";
+
+
+
+export function bindEvent(node,type,handler){
+  
   if(isString(node)) node = getNode(node);
 
-  node.addEventListener(type,handler); //이벤트 생성
+  node.addEventListener(type,handler);
 
   return () => node.removeEventListener(type,handler);
+
 }
 
 //const remove = bindEvent('.first','click',handleClick)
